@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'main.dart';
 class WeatherCloset extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -970,149 +970,276 @@ class NotWearingCloset extends StatelessWidget {
 class Laundry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 247,
-          height: 384,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: Colors.white),
-          child: Stack(
-            children: [
-              Positioned(
-                left: 96,
-                top: 14,
-                child: SizedBox(
-                  width: 134,
-                  height: 12,
-                  child: Text(
-                    '오늘의 코디는 ?',
-                    style: TextStyle(
-                      color: Color(0xFF7C7575),
-                      fontSize: 11,
-                      fontFamily: 'Instrument Sans',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
+    return SingleChildScrollView( // 스크롤 가능하도록 설정
+      child: Center(
+        child: Column(
+          children: [
+            UpUnderBar(), // 상단바와 하단바를 포함한 사용자 정의 위젯
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8, // 화면 크기 비례
+              height: 384,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(color: Colors.white),
+              child: Stack(
+                children: [
+                  // "오늘의 코디는 ?" 텍스트
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.3, // 반응형으로 조정
+                    top: 14,
+                    child: Text(
+                      '오늘의 코디는 ?',
+                      style: TextStyle(
+                        color: Color(0xFF7C7575),
+                        fontSize: 11,
+                        fontFamily: 'Instrument Sans',
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 6,
-                top: 13,
-                child: Text(
-                  'MY Closetly',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontFamily: 'Josefin Slab',
-                    fontWeight: FontWeight.w400,
-                    height: 0,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 9,
-                top: 61,
-                child: SizedBox(
-                  width: 104,
-                  height: 14,
-                  child: Text(
-                    '나의 위치',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontFamily: 'Inria Sans',
-                      fontWeight: FontWeight.w300,
-                      height: 0,
+                  // "MY Closetly" 텍스트
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.02,
+                    top: 13,
+                    child: Text(
+                      'MY Closetly',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: 'Josefin Slab',
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 87,
-                top: 11,
-                child: Container(
-                  width: 150,
-                  height: 17,
-                  decoration: ShapeDecoration(
-                    color: Color(0xB2D9D9D9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(80),
+                  // "나의 위치" 텍스트
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.05,
+                    top: 61,
+                    child: Text(
+                      '나의 위치',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: 'Inria Sans',
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 79,
-                top: 57,
-                child: Container(
-                  width: 121,
-                  height: 22,
-                  color: Colors.grey, // 회색 배경으로 변경
-                ),
-              ),
-              Positioned(
-                left: 72,
-                top: 125,
-                child: SizedBox(
-                  width: 128,
-                  height: 35,
-                  child: Text(
-                    '주변 세탁소 위치',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontFamily: 'Inria Sans',
-                      fontWeight: FontWeight.w300,
-                      height: 0,
+                  // 회색 배경
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.22,
+                    top: 57,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: 22,
+                      color: Colors.grey,
                     ),
                   ),
-                ),
+                  // "주변 세탁소 위치" 텍스트
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.25,
+                    top: 125,
+                    child: Text(
+                      '주변 세탁소 위치',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontFamily: 'Inria Sans',
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
+                  // 회색 컨테이너 추가
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.1,
+                    top: 180,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      height: 153,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  // 하단 회색 아이콘들
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.1,
+                    top: 353,
+                    child: Container(
+                      width: 26,
+                      height: 25,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.45,
+                    top: 353,
+                    child: Container(
+                      width: 33,
+                      height: 27,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.8,
+                    top: 352,
+                    child: Container(
+                      width: 26,
+                      height: 26,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
               ),
-              // 불필요한 이미지들과 회색 컨테이너 삭제
-              // 삭제된 컨테이너
-              Positioned(
-                left: 19,
-                top: 353,
-                child: Container(
-                  width: 26,
-                  height: 25,
-                  color: Colors.grey, // 회색 배경으로 변경
-                ),
-              ),
-              Positioned(
-                left: 111,
-                top: 353,
-                child: Container(
-                  width: 33,
-                  height: 27,
-                  color: Colors.grey, // 회색 배경으로 변경
-                ),
-              ),
-              Positioned(
-                left: 203,
-                top: 352,
-                child: Container(
-                  width: 26,
-                  height: 26,
-                  color: Colors.grey, // 회색 배경으로 변경
-                ),
-              ),
-              // 크기와 동일한 회색 컨테이너 추가
-              Positioned(
-                left: 22,
-                top: 180,
-                child: Container(
-                  width: 203,
-                  height: 153,
-                  color: Colors.grey, // 회색 배경으로 변경
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
+    );
+  }
+}
+
+
+class Laundry1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 384,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(color: Colors.white),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.4,
+                    top: 14,
+                    child: SizedBox(
+                      width: 134,
+                      height: 12,
+                      child: Text(
+                        '오늘의 코디는 ?',
+                        style: TextStyle(
+                          color: Color(0xFF7C7575),
+                          fontSize: 11,
+                          fontFamily: 'Instrument Sans',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 6,
+                    top: 13,
+                    child: Text(
+                      'MY Closetly',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: 'Josefin Slab',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 9,
+                    top: 61,
+                    child: SizedBox(
+                      width: 104,
+                      height: 14,
+                      child: Text(
+                        '나의 위치',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontFamily: 'Inria Sans',
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.35,
+                    top: 11,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: 17,
+                      decoration: ShapeDecoration(
+                        color: Color(0xB2D9D9D9),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(80),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.3,
+                    top: 57,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: 22,
+                      color: Colors.grey, // 회색 배경으로 변경
+                    ),
+                  ),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.3,
+                    top: 125,
+                    child: SizedBox(
+                      width: 128,
+                      height: 35,
+                      child: Text(
+                        '주변 세탁소 위치',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontFamily: 'Inria Sans',
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 19,
+                    top: 353,
+                    child: Container(
+                      width: 26,
+                      height: 25,
+                      color: Colors.grey, // 회색 배경으로 변경
+                    ),
+                  ),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.4,
+                    top: 353,
+                    child: Container(
+                      width: 33,
+                      height: 27,
+                      color: Colors.grey, // 회색 배경으로 변경
+                    ),
+                  ),
+                  Positioned(
+                    right: 19,
+                    top: 352,
+                    child: Container(
+                      width: 26,
+                      height: 26,
+                      color: Colors.grey, // 회색 배경으로 변경
+                    ),
+                  ),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.1,
+                    top: 180,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: 153,
+                      color: Colors.grey, // 회색 배경으로 변경
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

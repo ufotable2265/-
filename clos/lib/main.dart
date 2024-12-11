@@ -6,7 +6,7 @@ import 'control.dart';
 import 'append.dart';
 void main() {
   runApp(MaterialApp(
-    home: Laundry(),
+    home: Laundry1(),
   ));
 }
 
